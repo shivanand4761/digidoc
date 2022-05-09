@@ -46,6 +46,6 @@ spring:
         - id: product-webapp
           uri: http://locahost:3000
           predicates:
-            -Path=/**
+            - Path=/**
           filters:
-            -RewritePath=(?<segment>/?.*), $\{segment}
+            - RewritePath=(?<segment>/?.*), $\{segment}
