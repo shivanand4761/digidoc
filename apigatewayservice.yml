@@ -44,8 +44,8 @@ spring:
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
             
-        - id: product-webapp
-          uri: lb://product-webapp
+        - id: productwebapp
+          uri: lb://productwebapp
           predicates:
             - Path=/**
           filters:
