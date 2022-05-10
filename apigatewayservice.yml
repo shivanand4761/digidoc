@@ -32,7 +32,7 @@ spring:
         - id: authentication
           uri: http://localhost:8095
           predicates:
-            - Path=/api/v1/user/**
+            - Path=/api/v1/user/***
           filters:
             - RewritePath=/authentication(?<segment>/?.*), $\{segment}
 
