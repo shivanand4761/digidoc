@@ -39,7 +39,7 @@ spring:
         - id: appointmentservice
           uri: http://localhost:8060
           predicates:
-            - Path=/api/v1/***
+            - Path=/api/v1/**
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
             
