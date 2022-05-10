@@ -25,7 +25,7 @@ spring:
         - id: userservice
           uri: http://localhost:8075
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/v1/***
           filters:
             - RewritePath=/userservice(?<segment>/?.*), $\{segment}
 
@@ -39,13 +39,13 @@ spring:
         - id: appointmentservice
           uri: http://localhost:8060
           predicates:
-            - Path=/api/v1/**
+            - Path=/api/v1/***
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
             
         - id: product-webapp
           uri: http://locahost:3000
           predicates:
-            - Path=/**
+            - Path=/***
           filters:
             - RewritePath=(?<segment>/?.*), $\{segment}
