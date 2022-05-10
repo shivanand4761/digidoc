@@ -4,7 +4,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     register-with-eureka: true
     fetch-registry: true
-
 server:
   port: 8080
 
@@ -12,7 +11,7 @@ spring:
   main:
     web-application-type: reactive
   application:
-    name: apigateway
+    name: api-gateway
   cloud:
     gateway:
       globalcors:
@@ -26,33 +25,26 @@ spring:
         - id: userservice
           uri: http://localhost:8075
           predicates:
-            - Path=/userservice/**
+            - Path=/api/v1/***
           filters:
             - RewritePath=/userservice(?<segment>/?.*), $\{segment}
 
         - id: authentication
           uri: http://localhost:8095
           predicates:
-            - Path=/authentication/**
+            - Path=/api/v1/user/**
           filters:
             - RewritePath=/authentication(?<segment>/?.*), $\{segment}
-
-        - id: emailservice
-          uri: http://localhost:7777
-          predicates:
-            - Path=/emailservice/**
-          filters:
-            - RewritePath=/emailservice(?<segment>/?.*), $\{segment}
 
         - id: appointmentservice
           uri: http://localhost:8060
           predicates:
-            - Path=/appointmentservice/**
+            - Path=/api/v1/**
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
-
-        - id: productwebapp
-          uri: http://localhost:3000
+            
+        - id: product-webapp
+          uri: http://locahost:3000
           predicates:
             - Path=/**
           filters:
