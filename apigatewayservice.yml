@@ -42,7 +42,7 @@ spring:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
             
         - id: productwebapp
-          uri: http://locahost:3000
+          uri: http://localhost:3000
           predicates:
             - Path=/**
           filters:
