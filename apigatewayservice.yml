@@ -1,7 +1,7 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://${server_eureka}:8761/eureka
     register-with-eureka: true
     fetch-registry: true
 server:
@@ -21,28 +21,28 @@ spring:
             exposedHeaders: "*"
       routes:
         - id: userservice
-          uri: http://localhost:8075
+          uri: http://${server_userservice}:8075
           predicates:
             - Path=/userservice/**
           filters:
             - RewritePath=/userservice(?<segment>/?.*), $\{segment}
 
         - id: authentication
-          uri: http://localhost:8095
+          uri: http://${server_authentication}:8095
           predicates:
             - Path=/authentication/**
           filters:
             - RewritePath=/authentication(?<segment>/?.*), $\{segment}
 
         - id: appointmentservice
-          uri: http://localhost:8060
+          uri: http://${server_appointmentservice}:8060
           predicates:
             - Path=/appointmentservice/**
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
             
         - id: productwebapp
-          uri: http://locahost:3000
+          uri: http://${server_productwebapp}:3000
           predicates:
             - Path=/**
           filters:
